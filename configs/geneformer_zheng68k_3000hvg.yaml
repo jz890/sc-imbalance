@@ -1,0 +1,34 @@
+seed: 0
+dataset_name: zheng68k
+
+data:
+  train_h5ad: data/zheng68k/zheng68k_default_3000hvg_geneformer.h5ad
+  test_h5ad: data/zheng68k/zheng68k_test_3000hvg_geneformer.h5ad
+  celltype_col: celltype
+  gene_name_col: null
+  val_fraction: 0.1
+
+pretrained_model_dir: pretrained_model_weights/Geneformer/Geneformer-V1-10M
+
+loss: cross_entropy
+
+rare_class:
+  relative_threshold: 0.05
+
+train:
+  epochs: 15
+  batch_size: 12
+  eval_batch_size: 12
+  lr: 5.0e-5
+  amp: true
+
+model:
+  dropout: 0.1
+
+wandb:
+  project: sc-imbalance
+  entity: null
+  run_name: null
+
+output:
+  save_dir: results/geneformer_zheng68k_3000hvg_baseline

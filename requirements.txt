@@ -1,0 +1,37 @@
+# Install scGPT separately: pip install --no-deps scgpt==0.2.4
+
+# Core training
+torch==2.3.0
+torchtext==0.18.0
+numpy<2
+scanpy==1.9.3
+anndata==0.9.2
+ipython==8.21.0
+datasets==5.0.0
+transformers==4.46.3
+
+# Utilities
+pyyaml==6.0.1
+wandb==0.28.0
+python-dotenv==1.2.2
+scikit-learn==1.7.2
+pandas==2.3.3
+scipy==1.15.3
+mygene==3.2.2
+
+# Geneformer
+bitsandbytes>=0.45.5,<0.50
+hyperopt>=0.2
+loompy>=3.0
+optuna>=3.6
+optuna-integration>=3.6
+peft>=0.11.1
+pyarrow>=12.0
+pytz>=2023.0
+ray>=2.6
+seaborn>=0.12
+setuptools>=65.6
+statsmodels>=0.14
+tdigest>=0.5.2
+tensorboard>=2.15
+tqdm>=4.65

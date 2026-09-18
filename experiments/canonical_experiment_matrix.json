@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative definition of the 162-run core experiment matrix.",
+  "expected_run_count": 162,
+  "losses": [
+    "cross_entropy",
+    "weighted_ce",
+    "class_balanced",
+    "focal",
+    "ldam",
+    "logit_adjusted"
+  ],
+  "seeds": [0, 1, 2],
+  "cells": [
+    {"backbone": "scgpt", "dataset": "ms", "results_dir": "results/scgpt_baseline", "run_tag_template": "ms_{loss}_seed{seed}", "config": "configs/scgpt_ms.yaml"},
+    {"backbone": "scgpt", "dataset": "zheng68k", "results_dir": "results/scgpt_zheng68k_3000hvg_baseline", "run_tag_template": "zheng68k_{loss}_seed{seed}", "config": "configs/scgpt_zheng68k_3000hvg.yaml", "data_protocol": "top-3000-HVG"},
+    {"backbone": "scgpt", "dataset": "hpancreas", "results_dir": "results/scgpt_hpancreas_baseline", "run_tag_template": "hpancreas_{loss}_seed{seed}", "config": "configs/scgpt_hpancreas.yaml"},
+    {"backbone": "scbert", "dataset": "ms", "results_dir": "results/scbert_baseline", "run_tag_template": "scbert_ms_{loss}_seed{seed}", "config": "configs/scbert_ms.yaml"},
+    {"backbone": "scbert", "dataset": "zheng68k", "results_dir": "results/scbert_zheng68k_3000hvg_baseline", "run_tag_template": "scbert_zheng68k_{loss}_seed{seed}", "config": "configs/scbert_zheng68k_3000hvg.yaml", "data_protocol": "top-3000-HVG; batch_size=3 with grad_accumulation=20"},
+    {"backbone": "scbert", "dataset": "hpancreas", "results_dir": "results/scbert_hpancreas_baseline", "run_tag_template": "scbert_hpancreas_{loss}_seed{seed}", "config": "configs/scbert_hpancreas.yaml"},
+    {"backbone": "geneformer", "dataset": "ms", "results_dir": "results/geneformer_baseline", "run_tag_template": "geneformer_ms_{loss}_seed{seed}", "config": "configs/geneformer_ms.yaml"},
+    {"backbone": "geneformer", "dataset": "zheng68k", "results_dir": "results/geneformer_zheng68k_3000hvg_baseline", "run_tag_template": "geneformer_zheng68k_{loss}_seed{seed}", "config": "configs/geneformer_zheng68k_3000hvg.yaml", "data_protocol": "top-3000-HVG"},
+    {"backbone": "geneformer", "dataset": "hpancreas", "results_dir": "results/geneformer_hpancreas_baseline", "run_tag_template": "geneformer_hpancreas_{loss}_seed{seed}", "config": "configs/geneformer_hpancreas.yaml"}
+  ],
+  "aggregation_rule": "Calculate Pancreas macro metrics from per_class_report.csv excluding zero-test-support classes."
+}

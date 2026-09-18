@@ -1,0 +1,39 @@
+seed: 0
+dataset_name: zheng68k
+
+data:
+  train_h5ad: data/zheng68k/zheng68k_default_3000hvg.h5ad
+  test_h5ad: data/zheng68k/zheng68k_test_3000hvg.h5ad
+  celltype_col: celltype
+  gene_name_col: null
+  val_fraction: 0.1
+
+pretrained_model_dir: pretrained_model_weights/scGPT_human
+
+loss: cross_entropy
+
+rare_class:
+  relative_threshold: 0.05
+
+train:
+  epochs: 15
+  batch_size: 32
+  eval_batch_size: 32
+  lr: 1.0e-4
+  schedule_ratio: 0.9
+  amp: true
+
+model:
+  fast_transformer: true
+  fast_transformer_backend: flash
+  max_seq_len: 3001
+  n_bins: 51
+  dropout: 0.2
+
+wandb:
+  project: sc-imbalance
+  entity: null
+  run_name: null
+
+output:
+  save_dir: results/scgpt_zheng68k_3000hvg_baseline

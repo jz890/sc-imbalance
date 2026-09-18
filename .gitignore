@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+data/
+results/
+checkpoints/
+pretrained_model_weights/
+embeddings/
+embeddings_cache*/
+wandb/
+*.pt
+*.pth
+*.h5ad
+*.loom

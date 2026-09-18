@@ -1,0 +1,36 @@
+seed: 0
+dataset_name: zheng68k
+
+data:
+  train_h5ad: data/zheng68k/zheng68k_default_3000hvg.h5ad
+  test_h5ad: data/zheng68k/zheng68k_test_3000hvg.h5ad
+  celltype_col: celltype
+  gene_name_col: null
+  val_fraction: 0.1
+
+pretrained_model_dir: pretrained_model_weights/scBERT/panglao_pretrain.pth
+
+loss: cross_entropy
+
+rare_class:
+  relative_threshold: 0.05
+
+train:
+  epochs: 15
+  batch_size: 3
+  grad_accumulation: 20
+  eval_batch_size: 3
+  lr: 1.0e-4
+  amp: true
+
+model:
+  dropout: 0.0
+  gene2vec_path: pretrained_model_weights/scBERT/gene2vec_zheng68k.npy
+
+wandb:
+  project: sc-imbalance
+  entity: null
+  run_name: null
+
+output:
+  save_dir: results/scbert_zheng68k_3000hvg_baseline

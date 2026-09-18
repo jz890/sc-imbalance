@@ -1,0 +1,39 @@
+seed: 0
+dataset_name: ms
+
+data:
+  train_h5ad: data/ms/ms_default.h5ad
+  test_h5ad: data/ms/ms_test.h5ad
+  celltype_col: celltype
+  gene_name_col: gene_name
+  val_fraction: 0.1
+
+pretrained_model_dir: pretrained_model_weights/scGPT_human
+
+loss: cross_entropy
+
+rare_class:
+  relative_threshold: 0.05
+
+train:
+  epochs: 15
+  batch_size: 32
+  eval_batch_size: 32
+  lr: 1.0e-4
+  schedule_ratio: 0.9
+  amp: true
+
+model:
+  fast_transformer: true
+  fast_transformer_backend: flash
+  max_seq_len: 3001
+  n_bins: 51
+  dropout: 0.2
+
+wandb:
+  project: sc-imbalance
+  entity: null
+  run_name: null
+
+output:
+  save_dir: results/scgpt_baseline

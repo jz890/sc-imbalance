@@ -1,0 +1,35 @@
+seed: 0
+dataset_name: hpancreas
+
+data:
+  train_h5ad: data/hpancreas/demo_train_geneformer.h5ad
+  test_h5ad: data/hpancreas/demo_test_geneformer.h5ad
+  celltype_col: Celltype
+  gene_name_col: null
+  val_fraction: 0.1
+
+pretrained_model_dir: pretrained_model_weights/scBERT/panglao_pretrain.pth
+
+loss: cross_entropy
+
+rare_class:
+  relative_threshold: 0.05
+
+train:
+  epochs: 15
+  batch_size: 1
+  eval_batch_size: 1
+  lr: 1.0e-4
+  amp: true
+
+model:
+  dropout: 0.0
+  gene2vec_path: pretrained_model_weights/scBERT/gene2vec_hpancreas.npy
+
+wandb:
+  project: sc-imbalance
+  entity: null
+  run_name: null
+
+output:
+  save_dir: results/scbert_hpancreas_baseline
